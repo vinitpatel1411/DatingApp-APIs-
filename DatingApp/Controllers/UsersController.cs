@@ -1,6 +1,7 @@
 ﻿using DatingApp.Data;
 using DatingApp.Entities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +14,11 @@ namespace DatingApp.Controllers
     public class UsersController : Controller
     {
         private readonly DataContext _context;
-        public UsersController(DataContext Context)
+        private readonly ILogger<UsersController> _logger;
+        public UsersController(DataContext Context, ILogger<UsersController> logger)
         {
             _context = Context;
+            _logger = logger;
         }
 
         [HttpGet("")]
